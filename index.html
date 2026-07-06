@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dane White, PhD | Leadership &amp; Team Development at Scale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --moss:#1E2A22;
+    --moss-deep:#15201A;
+    --cream:#F4EFE3;
+    --wheat:#C9A227;
+    --terracotta:#A8553C;
+    --line: rgba(244,239,227,0.14);
+    --muted: rgba(244,239,227,0.62);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--moss);
+    color:var(--cream);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+
+  nav{
+    position:sticky;top:0;z-index:10;
+    background:rgba(21,32,26,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:64px;}
+  .nav-name{font-family:'Fraunces',serif;font-size:18px;}
+  .nav-links{display:flex;gap:28px;font-size:14px;color:var(--muted);}
+  .nav-links a:hover{color:var(--wheat);}
+  @media(max-width:640px){.nav-links{display:none;}}
+
+  .hero{padding:96px 0 80px;border-bottom:1px solid var(--line);position:relative;overflow:hidden;}
+  .eyebrow{
+    font-size:13px;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--wheat);margin-bottom:20px;display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--wheat);}
+  .hero h1{font-size:clamp(36px,5.5vw,58px);line-height:1.08;max-width:820px;}
+  .hero h1 em{font-style:italic;color:var(--wheat);}
+  .hero p.lede{margin-top:24px;max-width:640px;font-size:18px;color:var(--muted);}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:24px;margin-top:36px;font-size:14px;color:var(--muted);}
+  .hero-cta{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:13px 26px;border-radius:2px;font-size:14px;font-weight:600;
+    text-decoration:none;transition:opacity .15s ease;
+  }
+  .btn-primary{background:var(--wheat);color:var(--moss-deep);}
+  .btn-ghost{border:1px solid var(--line);color:var(--cream);}
+  .btn:hover{opacity:0.85;}
+
+  .section{padding:80px 0;border-bottom:1px solid var(--line);}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:48px;flex-wrap:wrap;}
+  .section-head .eyebrow{margin-bottom:10px;}
+  .section-head h2{font-size:clamp(26px,3.5vw,36px);}
+  .section-head p{color:var(--muted);max-width:440px;font-size:15px;}
+
+  .summary-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;}
+  @media(max-width:760px){.summary-grid{grid-template-columns:1fr;}}
+  .summary-grid p{color:var(--muted);font-size:16px;margin-bottom:16px;}
+  .competency-list{list-style:none;}
+  .competency-list li{
+    padding:14px 0;border-top:1px solid var(--line);font-size:15px;
+    display:flex;justify-content:space-between;gap:12px;
+  }
+  .competency-list li span.tag{color:var(--wheat);font-size:13px;text-align:right;}
+
+  .course-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media(max-width:760px){.course-grid{grid-template-columns:1fr;}}
+  .course-card{
+    background:var(--moss);padding:32px;display:flex;flex-direction:column;gap:14px;
+    transition:background .15s ease;
+  }
+  .course-card:hover{background:var(--moss-deep);}
+  .course-cohort{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--terracotta);}
+  .course-card h3{font-size:21px;}
+  .course-card p{color:var(--muted);font-size:14.5px;flex-grow:1;}
+  .course-link{
+    font-size:13px;font-weight:600;color:var(--wheat);text-decoration:none;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .course-link::after{content:"\2192";transition:transform .15s ease;}
+  .course-link:hover::after{transform:translateX(3px);}
+
+  .role{padding:28px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:200px 1fr;gap:24px;}
+  @media(max-width:640px){.role{grid-template-columns:1fr;gap:8px;}}
+  .role-dates{color:var(--muted);font-size:13px;}
+  .role h3{font-size:18px;margin-bottom:4px;}
+  .role .org{color:var(--wheat);font-size:14px;margin-bottom:10px;}
+  .role p{color:var(--muted);font-size:14.5px;}
+
+  .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media(max-width:760px){.stat-grid{grid-template-columns:repeat(2,1fr);}}
+  .stat-card{background:var(--moss);padding:32px 24px;}
+  .stat-num{font-family:'Fraunces',serif;font-size:38px;color:var(--wheat);line-height:1;margin-bottom:10px;}
+  .stat-label{font-size:13.5px;color:var(--muted);}
+
+  .paper{padding:26px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr;gap:8px;}
+  .paper h3{font-size:18px;}
+  .paper p{color:var(--muted);font-size:14.5px;}
+
+  .testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media(max-width:760px){.testimonial-grid{grid-template-columns:1fr;}}
+  .testimonial-card{background:var(--moss);padding:32px;display:flex;flex-direction:column;gap:18px;}
+  .testimonial-card p.quote{font-family:'Fraunces',serif;font-style:italic;font-size:16px;color:var(--cream);line-height:1.55;}
+  .testimonial-card p.quote::before{content:"\201C";}
+  .testimonial-card p.quote::after{content:"\201D";}
+  .testimonial-name{font-size:13.5px;color:var(--wheat);font-weight:600;}
+  .testimonial-role{font-size:12.5px;color:var(--muted);}
+
+  footer{padding:64px 0;text-align:center;}
+  footer h2{font-size:clamp(28px,4vw,40px);margin-bottom:16px;}
+  footer p{color:var(--muted);margin-bottom:32px;}
+  .contact-row{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;font-size:14px;color:var(--muted);margin-top:32px;}
+  .contact-row a:hover{color:var(--wheat);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-name">Dane White, PhD</div>
+    <div class="nav-links">
+      <a href="#about">Summary</a>
+      <a href="#results">Results</a>
+      <a href="#courses">Programs</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Leadership &amp; Team Development &middot; Executive Coaching &middot; Human + AI Practice</div>
+    <h1>Diagnose the system. Design the intervention. Coach the <em>leader who has to lead through it.</em></h1>
+    <p class="lede">18+ years of consultative leadership work with executives, teams, and organizations across a national leadership organization spanning 6+ countries, statewide K-12 systems, and enterprise clients in agriculture, technology, financial services, and manufacturing. Doctoral research on human-plus-AI leadership. ICF ACC in progress.</p>
+    <div class="hero-meta">
+      <span>Eureka, California</span>
+      <span>danewhite@gmail.com</span>
+      <span>707.616.8751</span>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#results">See the results</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="about">
+  <div class="wrap summary-grid">
+    <div>
+      <div class="eyebrow">Summary</div>
+      <p>Consultative leadership development and organizational effectiveness partner with a sustained track record of naming root causes rather than symptoms, then translating diagnosis into bespoke leader and team interventions grounded in organizational data. Not templated training. Sustained, expert-level partnership with the leader who owns the outcome.</p>
+      <p>Currently Education Director at the California Agricultural Leadership Foundation, designing and delivering leader and team development, executive coaching, and evidence-based diagnostic work across a multi-site national organization. Doctoral research focused on AI-era leadership, team dynamics, and the coaching craft required to lead people through disruption.</p>
+    </div>
+    <ul class="competency-list">
+      <li>Executive Coaching <span class="tag">ICF ACC in progress</span></li>
+      <li>Team &amp; Leader Diagnosis <span class="tag">EQi 2.0, Big Five, 360</span></li>
+      <li>Bespoke Intervention Design <span class="tag">Rooted in diagnostic data</span></li>
+      <li>Change &amp; Transformation <span class="tag">Reorg, strategy shift, AI</span></li>
+      <li>Cross-Functional Partnership <span class="tag">Business, HR, cohort</span></li>
+      <li>Human + AI Leadership <span class="tag">PhD research focus</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="results">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Results</div>
+        <h2>Impact, in numbers</h2>
+      </div>
+      <p>A sample of measurable outcomes across coaching, team, and leadership development work.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">6+</div>
+        <div class="stat-label">Countries spanned by the multi-site leadership program currently designed and led</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">1,200+</div>
+        <div class="stat-label">Leaders and educational executives developed through facilitated leadership sessions</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3.6 to 4.8</div>
+        <div class="stat-label">Coaching satisfaction lift across current cohorts, on a 5-point scale</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">~70% / ~66%</div>
+        <div class="stat-label">Pre/post gains in empathy and leadership effectiveness measured across program participants</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="courses">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Selected Program Work</div>
+        <h2>Bespoke leadership development, built and delivered</h2>
+      </div>
+      <p>Six leadership modules built and delivered as cohort preparation and development coursework for the Ag Leadership Program. Each link opens the live experience.</p>
+    </div>
+    <div class="course-grid">
+
+      <div class="course-card">
+        <div class="course-cohort">Leadership Module &middot; Part 1</div>
+        <h3>Hidden Potential</h3>
+        <p>Development module exploring how leaders surface and grow capability that has not yet been put to use, built around self-assessment and reflective practice.</p>
+        <a class="course-link" href="https://l4hidden1.vercel.app/#/" target="_blank" rel="noopener">View program</a>
+      </div>
+
+      <div class="course-card">
+        <div class="course-cohort">Leadership Module &middot; Part 2</div>
+        <h3>Sustaining Motivation</h3>
+        <p>Second in the series, focused on what keeps leaders and teams engaged through long, demanding initiatives rather than just how to start them.</p>
+        <a class="course-link" href="https://l4hidden2.vercel.app/#/" target="_blank" rel="noopener">View program</a>
+      </div>
+
+      <div class="course-card">
+        <div class="course-cohort">Leadership Module &middot; Part 3</div>
+        <h3>Systems of Opportunity</h3>
+        <p>Closing module connecting individual leadership growth to the organizational systems leaders operate inside, framing opportunity as something designed, not stumbled into.</p>
+        <a class="course-link" href="https://l4hidden3final.vercel.app/#/" target="_blank" rel="noopener">View program</a>
+      </div>
+
+      <div class="course-card">
+        <div class="course-cohort">Class 54 &middot; Cohort Prep</div>
+        <h3>International Seminar Prep</h3>
+        <p>Pre-departure development built for Class 54 fellows ahead of their international seminar, covering context, expectations, and the leadership lens to bring into the experience.</p>
+        <a class="course-link" href="https://54internationalprepfinal.vercel.app/#/" target="_blank" rel="noopener">View program</a>
+      </div>
+
+      <div class="course-card">
+        <div class="course-cohort">Class 55 &middot; Applicant Prep</div>
+        <h3>Applicant Preparation</h3>
+        <p>Onboarding designed to orient incoming Class 55 candidates to the program&rsquo;s expectations and leadership framework before the cohort begins.</p>
+        <a class="course-link" href="https://55applicantfinal.vercel.app/" target="_blank" rel="noopener">View program</a>
+      </div>
+
+      <div class="course-card">
+        <div class="course-cohort">Class 55 &middot; Inaugural Prework</div>
+        <h3>Inaugural Prework</h3>
+        <p>Foundational prework delivered to Class 55 ahead of their inaugural session, establishing shared language and expectations for the 17-month program to follow.</p>
+        <a class="course-link" href="https://55inauguralprep.vercel.app/#/" target="_blank" rel="noopener">View program</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Experience</div>
+        <h2>Where this work has lived</h2>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="role-dates">Nov 2022 &ndash; Present</div>
+      <div>
+        <h3>Education Director, Leadership Development</h3>
+        <div class="org">California Agricultural Leadership Foundation</div>
+        <p>Designs and delivers bespoke leader and team development experiences, executive coaching engagements, and evidence-based diagnostic interventions across a multi-site organization spanning 6+ countries. Pre/post assessments show ~70% gains in empathy and ~66% in leadership effectiveness; coaching satisfaction raised from 3.6 to 4.8 on a 5-point scale.</p>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="role-dates">Aug 2021 &ndash; Oct 2022</div>
+      <div>
+        <h3>Client Solutions Consultant</h3>
+        <div class="org">Vivayic, Inc.</div>
+        <p>Delivered organizational effectiveness and leadership development work for enterprise clients across agriculture, technology, financial services, and manufacturing. Facilitated the development of a $7M ongoing partnership with a national organization by starting from diagnosis rather than a predetermined program.</p>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="role-dates">Jun 2019 &ndash; Jul 2021</div>
+      <div>
+        <h3>Statewide Program Consultant</h3>
+        <div class="org">California Department of Education</div>
+        <p>Led leadership and organizational effectiveness work across 1,000+ K-12 organizations statewide. Facilitated 300+ professional development sessions and leadership sessions for 1,200+ educational executives across California and the United States.</p>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="role-dates">Jul 2007 &ndash; May 2019</div>
+      <div>
+        <h3>Instructor &amp; Program Designer</h3>
+        <div class="org">Galt High School, Galt Joint Union HSD</div>
+        <p>Grew program enrollment from 188 to 917 students in 4 years by building the leadership and coaching systems that developed staff and student leaders. Founded a student-run enterprise employing 18 to 20 students annually, generating $500K+ in college scholarships, and coached teams to 10 State and 4 National Champion results.</p>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="role-dates">2023 &ndash; 2025</div>
+      <div>
+        <h3>PhD, Leadership Studies</h3>
+        <div class="org">University of the Cumberlands &middot; 4.0 GPA</div>
+        <p>Dissertation: Perspectives of Community Leaders on Essential Leadership Qualities for Maximum Community Impact. Research focus on human-plus-AI leadership, coaching craft, and team dynamics in fast-moving, technology-driven organizations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="papers">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Doctoral Research</div>
+        <h2>Selected papers</h2>
+      </div>
+      <p>Research from a PhD in Leadership Studies, focused on how AI is reshaping leadership, team dynamics, and the coaching craft.</p>
+    </div>
+
+    <div class="paper">
+      <h3>AI-Augmented Emotional Intelligence: A Framework for Scalable Leadership Assessment in Technology-Driven Organizations</h3>
+      <p>Looks at how AI tools can be built into leadership assessment without losing the human judgment that makes those assessments useful, proposing a framework for scaling emotionally intelligent evaluation across larger organizations.</p>
+    </div>
+
+    <div class="paper">
+      <h3>The Neuroscience of Change: Emotional Intelligence as a Mediator of AI Adoption in Corporate Learning Environments</h3>
+      <p>A mixed-methods study on why people resist organizational change, using neuroscience and emotional intelligence research to explain that resistance and offering implications for how coaches and leaders can support adoption of new technology.</p>
+    </div>
+
+    <div class="paper">
+      <h3>Human-Centered AI in Corporate Training: Designing Emotionally Intelligent Systems That Drive Efficacy Without Eroding Trust</h3>
+      <p>Examines how AI-enabled systems can stay effective and efficient without making employees feel surveilled or replaced, and what that means for the future role of the leadership development practitioner.</p>
+    </div>
+
+    <div class="paper">
+      <h3>Generative AI as Co-Facilitator: Reimagining Leadership Development Through Human-Machine Collaboration</h3>
+      <p>Explores what happens to facilitation and coaching practice when generative AI sits alongside the human facilitator, and how that changes both the design of leadership programs and the skills practitioners need going forward.</p>
+    </div>
+
+    <div class="paper">
+      <h3>Measuring What Matters: Predictive Analytics and Sentiment Modeling for Emotionally Intelligent Leadership Development Programs</h3>
+      <p>Proposes a framework for using predictive analytics and sentiment data to measure whether leadership development programs are actually working, connecting coaching outcomes more directly to business results.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">From Colleagues</div>
+        <h2>What people say</h2>
+      </div>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p class="quote">Dane is bar none the most gifted teacher I&rsquo;ve been able to coach. In my many years of working with Dane, I&rsquo;ve seen his ability to translate concept into effortless execution. He has the gift that so few have, and he uses it generously in service of a mission.</p>
+        <div>
+          <div class="testimonial-name">Mark Reardon</div>
+          <div class="testimonial-role">CEO &amp; President, Centre Point Leadership / Quantum Learning Global</div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="quote">Dane is an exceptional coach, and I&rsquo;d hire him to be part of my practice in a heartbeat. Everything he touches becomes better as a result. He&rsquo;s extraordinarily gifted at reading people and knowing what makes them tick, urging them along toward the fulfillment of their best selves.</p>
+        <div>
+          <div class="testimonial-name">Marla Collins</div>
+          <div class="testimonial-role">Principal &amp; CEO, Catalyst Leadership Group</div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="quote">He&rsquo;s formidable and approachable all at once. Dane is the kind of leader who invites you into the room, wants to know you, and makes sure you are equipped to maximize your talents, then walks alongside you and celebrates your growth. He isn&rsquo;t afraid of doing the hard things, and he does so with empathy and kindness.</p>
+        <div>
+          <div class="testimonial-name">Dr. Lonisa Early</div>
+          <div class="testimonial-role">Principal &amp; CEO, Earth Consulting Solutions</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Let&rsquo;s talk.</h2>
+    <p>Open to leadership development, executive coaching, and organizational effectiveness roles.</p>
+    <a class="btn btn-primary" href="mailto:danewhite@gmail.com">Email Dane</a>
+    <div class="contact-row">
+      <a href="mailto:danewhite@gmail.com">danewhite@gmail.com</a>
+      <a href="tel:7076168751">707.616.8751</a>
+      <span>Eureka, California</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
